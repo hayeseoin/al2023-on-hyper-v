@@ -1,0 +1,14 @@
+#cloud-config
+users:
+  - name: ec2-user
+    groups: [wheel]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    lock_passwd: false
+    # Set password as password
+    #passwd: "$6$/EcnIbxiVa3zpvGi$ivoX7m/BL85E3SULpq2PHIqr2MLl0IaubOPAdpCheIZ1KF4W6618YlaLng.ve2r6lUlP5v.qqBOCcasL4ATpd1"
+    ssh_authorized_keys:
+      - __SSH_KEY__
+hostname: al2023
+disable_root: false
+ssh_pwauth: true
