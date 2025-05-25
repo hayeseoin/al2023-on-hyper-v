@@ -48,7 +48,7 @@ genisoimage -output seed.iso -volid cidata -joliet -rock user-data meta-data
 
 ```
 
-### 3. Download and save Hyper-V image
+## 3. Download and save Hyper-V image
 Create a directory for your seed.iso file and the Hyper V template from Amazon e.g. C:\Users\<your_user>\hyperv\al2023-base
 
 Copy the seed.iso file to this location.
