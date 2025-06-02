@@ -6,7 +6,7 @@ Since AL2023 only works with cloud-init, we need to make a seed.iso file to the 
 
 These steps cover the general process of launching the instance. For specific steps on creating and deploying a Vagrant Box (recommended) or a Hyper-V template to import, including premade seed.iso files, follow the steps in the respective folders in this repo: 
 
-### Vagrant Box: [vagrant-box](vagant-box)
+### Vagrant Box: [vagrant-box](vagrant-box)
 
 ### Hyper-V Template: [hyper-v-template](hyper-v-template)  
 
