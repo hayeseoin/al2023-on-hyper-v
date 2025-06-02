@@ -1,0 +1,1 @@
+s3://hayeseoin-lab-resources/vagrant-boxes/hayeseoin-VAGRANTSLASH-al2023-hyperv.zip

@@ -2,6 +2,8 @@
 
 These steps create a Vagrantbox for Hyper-V of Amazon Linux 2023. This repo includes a ready made seed.iso file cloud-init. The Hyper-V image can be downloaded here https://cdn.amazonlinux.com/al2023/os-images/latest/
 
+The Vagrant box made with this repo can be found in the S3 bucket in [s3uri.txt](s3uri.txt) (not publically accessible).
+
 To do this, we will boot the VM with the provided seed.iso file (which adds the insecure key), then export the VM to a template. The steps below cover the proess.
 
 ---

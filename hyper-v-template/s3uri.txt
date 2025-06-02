@@ -1,0 +1,1 @@
+s3://hayeseoin-lab-resources/hyper-v-templates/Golden-AL2023-Hyper-V-Base.zip

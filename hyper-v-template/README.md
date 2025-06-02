@@ -2,6 +2,8 @@
 
 These steps create a Hyper-V template which can be imported as a new VM. This repo includes a ready made seed.iso file for launching an Amazon Linux 2023 (AL2023) instance on Hyper-V. The Hyper-V image can be downloaded here https://cdn.amazonlinux.com/al2023/os-images/latest/
 
+The Hyper-V template made with this repo can be found in the S3 bucket in [s3uri.txt](s3uri.txt) (not publically accessible).
+
 To do this, we will boot the VM with the provided seed.iso file (which adds the insecure key), then export the VM to a template. The steps below cover the proess.
 
 When the template is deployed, it can be accessed with the `ec2-insecure-access.pem` key. This key will automatically be deleted on first sign in, so the first step after deployment must be to add your own key.
