@@ -1,4 +1,4 @@
-# AL2023 on Hyper V
+# Amazon Linux 2023 (AL2023) on Hyper V
 
 This repo deails how to launch an instance of Amazon Linux 2023 to a Hyper-V VM. 
 
