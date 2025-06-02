@@ -1,4 +1,4 @@
-# Create a Vagant Box of Amazon Linux 2023
+# Create a Vagrant Box of Amazon Linux 2023
 
 These steps create a Vagrantbox for Hyper-V of Amazon Linux 2023. This repo includes a ready made seed.iso file cloud-init. The Hyper-V image can be downloaded here https://cdn.amazonlinux.com/al2023/os-images/latest/
 
