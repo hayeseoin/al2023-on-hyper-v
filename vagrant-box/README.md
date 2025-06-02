@@ -1,13 +1,15 @@
-# Create an Amazon Linux 2023 Vagrant box for Hyper-V
+# Create a Vagant Box of Amazon Linux 2023
 
 These steps create a Vagrantbox for Hyper-V of Amazon Linux 2023. This repo includes a ready made seed.iso file cloud-init. The Hyper-V image can be downloaded here https://cdn.amazonlinux.com/al2023/os-images/latest/
 
 To do this, we will boot the VM with the provided seed.iso file (which adds the insecure key), then export the VM to a template. The steps below cover the proess.
 
-## 1. Download Hyper-V image
+---
+
+### 1. Download Hyper-V image
 Download the Hyper-V image from Amazon, and the seed.iso file from this folder `hyper-v-template/seed.iso`.
 
-## 2. Create VM
+### 2. Create VM
 In Hyper-V, create a new VM: Actions >> New >> Virtual Machine.  
 Create the VM with the following settings, but *don't* start it when done.
  - Name: al2023-hyperv-vagrant-box
@@ -19,14 +21,14 @@ Create the VM with the following settings, but *don't* start it when done.
  - Connect Virtual Hard Disk:  
  Use an existing virtual disk: `"C:\path\to\al2023-hyperv-2023.7.20250512.0-kernel-6.1-x86_64.xfs.gpt.vhdx"`
 
-## 3. Configure VM settings
+### 3. Configure VM settings
 Before starting the VM, right click and press Settings and set:
  - Security: Disable Secure Boot
  - Processor: Set to 1 or 2 if not already there
  - Checkpoints: Disable checkpoints
 Apply changes, but stay in settings.
 
-## 4. Attach `seed.iso`
+### 4. Attach `seed.iso`
 While still in settings, attach the seed.iso:
  - SCSI Controller:
     - DVD Drive - Add
@@ -34,17 +36,19 @@ While still in settings, attach the seed.iso:
     - Media: Image File: `C:\path\to\seed.iso`
 Apply changes. Exit settings.
 
-## 5. Start the VM
+### 5. Start the VM
 Start the VM to initialize it, which adds the vagrant key.
 
-## 6. Turn off and Export the VM
+### 6. Turn off and Export the VM
 Turn off the VM (right click - Turn off).
 
 **Important**: Before exporting the VM, remove the DVD drive in the settings.
 
 Right click the VM and click Export..., then save it somewhere on your computer. e.g. `C:\Users\<your_user>>\hyperv\`
 
-## 7. Confirm the export
+![alt text](images/image.png)
+
+### 7. Confirm the export
 The exported folder should look like this 
 ```
 .
@@ -53,7 +57,7 @@ The exported folder should look like this
 └── Virtual Machines
 ```
 
-## 8. Add Vagrantfile and Metadata
+### 8. Add Vagrantfile and Metadata
 Place the following `Vagrantfile` and a `metadata.json` file in this directory structure, so that it looks like this:
 ```
 .
@@ -75,7 +79,7 @@ metadata.json
 ```json
 { "provider": "hyperv" }
 ```
-## 9. Archive into a box
+### 9. Archive into a box
 Using **Powershell** run this command from **inside** the directory:
 ```ps
 tar -cvf al2023-hyperv.box metadata.json Vagrantfile "Virtual Machines" "Virtual Hard Disks" "Snapshots" 
@@ -88,7 +92,7 @@ This creates a .box file with the following structure. For this to work as a vag
 ├── Virtual Hard Disks
 └── Virtual Machines     
 ```
-## 10. Add the new box to Vagrant
+### 10. Add the new box to Vagrant
 Vagrant must be run in an Admin Powershell instance to work with the Hyper-V provider.
 
 Run this command from Powershell to add the box to vagrant  
@@ -168,9 +172,9 @@ node1                     running (hyperv)
 PS C:\Users\eoaha\hyperv\vagrant-box\vagrant-test> vagrant ssh node1 
 
    ,     #_
-   ~\_  ####_        Amazon Linux 2023
-  ~~  \_#####\
-  ~~     \###|
+   ~\_  ######_        Amazon Linux 2023
+  ~~  \_#######\
+  ~~     \####|
   ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
    ~~       V~' '->
     ~~~         /

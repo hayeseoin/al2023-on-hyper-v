@@ -1,12 +1,20 @@
 # AL2023 on Hyper V
 
-The following steps details how to run an Amazon Linux 2023 instance on Hyper V on Windows. We need to download the image from Amazon, and configure it with genisoimage to enable SSH access via key or password.
+This repo deails how to launch an instance of Amazon Linux 2023 to a Hyper-V VM. 
 
-Prerequisites: A linux terminal (i.e. WSL), genisoimage in Linux (i.e. apt install genisoimage)
+Since AL2023 only works with cloud-init, we need to make a seed.iso file to the Amazon provided image with the right user data (adding password, keys, etc)
 
+These steps cover the general process of launching the instance. For specific steps on creating and deploying a Vagrant Box (recommended) or a Hyper-V template to import, including premade seed.iso files, follow the steps in the respective folders in this repo: 
+
+### Vagrant Box: [vagrant-box](vagant-box)
+
+### Hyper-V Template: [hyper-v-template](hyper-v-template)  
+
+---
+
+### Prerequisites: 
+A linux terminal (i.e. WSL), genisoimage in Linux (i.e. apt install genisoimage)  
 AL2023 base image can be found at: https://cdn.amazonlinux.com/al2023/os-images/latest/
-
-Use the following steps to generate a seed iso for Hyper V bootable version of AL2023
 
 ## 1. Create user-data file
 Copy user-data.template to user-data and replace \_\_SSH_KEY\_\_ with your actual ssh pubic key. Snippet below:

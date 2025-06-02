@@ -9,3 +9,17 @@ users:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDYz5FW4UlZE6kMmOIoE8rWCC87JEqZaO0zmhWESR0BF62XoP+ElokVbF0Cw3XxNCwmk+7DQ5n8S5zMpCsVnPqPPF9bvLyTuYHoMcPTP+ph0e49maxhNoDChl1Y1YnP/9WzjIZaSXr9VBuCpZQ55TWSvj0MSgfe6PrCWFe/l2Y0iUH+FxGbwRMZLylMSTdtFtMo0YSiEdZM3fo5jiJJ9yNx6EjAMYA1Y8+SXInJgTOVJQbkOuamJLGJOiG3Vdi832pbaRYuMmr5ZWo0m3Qq15B7Bjw2qkTMLx+7dElqfWML6BqxV/+VfZ7ENaGUPJFgCpi7PkE6ZkJIkY2nN8Gczg91 insecure-ec2-key
 hostname: al2023-hyperv
 disable_root: false
+
+write_files:
+  - path: /home/ec2-user/.bash_profile
+    owner: ec2-user:ec2-user
+    permissions: '0644'
+    content: |
+      #!/bin/bash
+      # First login logic
+      AUTH_KEYS="/home/ec2-user/.ssh/authorized_keys"
+      sudo chown -R ec2-user:ec2-user "/home/ec2-user"
+      sed -i '/insecure-ec2-key/d' "$AUTH_KEYS"
+      echo 'Insecure key has been removed, make sure to add your own public key to ~/.ssh/authorized_keys if you have not already done so.'
+      rm -f -- /home/ec2-user/.bash_profile
+      exec /bin/bash --login
